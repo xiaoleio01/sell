@@ -1,0 +1,68 @@
+#开发环境配置
+server:
+  port: 8080
+  context-path: /sell
+
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.2.122/sel?characterEncoding=utf-8&useSSL=false
+
+
+
+
+#日志配置
+#logging:
+ # pattern:
+    #日志格式配置
+  #  console: "%d - %msg%n"
+    #日志路径
+ # path: /Users/xiaoyunsheng/Desktop/点餐系统/log
+ # file: /Users/xiaoyunsheng/Desktop/点餐系统/log/sell.log
+ # level:
+ #   com.shawlen.sell.LoggerTest: debug
+
+  #此注释是返回的前端数据为null就不返回，也可以在此不写，在类上配置@JsonInclude(JsonInclude.Include.NON_NULL)，
+  jackson:
+    default-property-inclusion: non_null
+
+  #配置redis
+  redis:
+    host: 192.168.2.122
+    port: 6379
+
+
+wechat:
+  mpAppIdLogin: wxb328b84b6479920b
+  mpAppIdPay: wxd898fcb01713c658
+  mpAppSecret: d3ea07a324a0805d294cab3fe648e6a2
+  openAppIdLogin: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
+  mchId: 1483469312
+  mchKey: 098F6BCD4621D373CADE4E832627B4F6
+  KeyPath: /Users/xiaoyunsheng/IdeaProjects/sell/src/main/resources/static/h5.p12
+  notifyUrl:  http://shawlen.natapp1.cc/sell/pay/notify
+  templateId:
+    orderStatus: y50m2Q5T0Q_HMTr4ieyxeLsnItYA3ekNYWTlxijuguA
+
+
+projectUrl:
+  wechatMpAuthorize: http://shawlen.natapp1.cc
+  wechatOpenAuthorize: http://shawlen.natapp1.cc
+  sell: http://shawlen.natapp1.cc
+
+#设置此日志级别可以看到mapper的SQL语言打印出来
+logging:
+  level:
+    com:
+      shawlen:
+        sell:
+          dataobject:
+            mapper: trace
+
+#配置mybatis的XML文件方法
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
